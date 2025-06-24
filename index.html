@@ -35,10 +35,10 @@
       
         return (
           <div>
-            <Header title="Develop. Preview. Ship." />
+            <Header title="Amazing Engineering Women." />
             <ul>
               {names.map((name) => (
-                <li>{name}</li>
+                <li key={name}>{name}</li>
               ))}
             </ul>
           </div>
