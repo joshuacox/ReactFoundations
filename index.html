@@ -7,12 +7,22 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/jsx">
       const app = document.getElementById("app")
-      function Header() {
-        return (<h1>Develop. Preview. Ship.</h1>)
+      function Headerwprops(props) {
+        console.log(props); // { title: "React" }
+        return (<h1>{props.title}</h1>)
+      }
+      function Header({ title }) {
+        console.log(title); // { title: "React" }
+        return (<h1>{`Cool ${title}`}</h1>)
+      }
+      function HomePagewprops() {
+        return (<div>
+          <Headerwprops title="Reactwprops" />
+        </div>)
       }
       function HomePage() {
         return (<div>
-          <Header />
+          <Header title="React" />
         </div>)
       }
       // const domNode = document.getElementById('app');
@@ -20,6 +30,7 @@
       // root.render(<h1>Develop. Preview. Ship.</h1>);
       const root = ReactDOM.createRoot(app);
       root.render(<HomePage />);
+      // root.render(<HomePagewprops />);
     </script>
   </body>
 </html>
