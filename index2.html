@@ -1,0 +1,61 @@
+<html>
+  <body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel Script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/jsx">
+      const app = document.getElementById("app")
+      function Headerwprops(props) {
+        console.log(props); // { title: "React" }
+        return (<h1>{props.title}</h1>)
+      }
+      function createTitle(title) {
+        if (title) {
+          return title
+        } else {
+          return 'Default title';
+        }
+      }
+      function Header({ title }) {
+        console.log(title); // { title: "React" }
+        return <h1>{`Very Cool ${createTitle(title)}`}</h1>;
+      }
+      function HeaderTernary({ title }) {
+        return <h1>{title ? title : 'Default Title'}</h1>;
+      }
+      function HomePagewprops() {
+        return (<div>
+          <Headerwprops title="Reactwprops" />
+        </div>)
+      }
+      function HomePage() {
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+        const [likes, setLikes] = React.useState(0);
+        function handleClick() {
+          console.log('increment like count');
+          setLikes(likes + 1);
+        }
+      
+        return (
+          <div>
+            <Header title="Amazing Engineering Women." />
+            <ul>
+              {names.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+            <button onClick={handleClick}>Like({likes})</button>
+          </div>
+        );
+      }
+      // const domNode = document.getElementById('app');
+      // const root = ReactDOM.createRoot(domNode);
+      // root.render(<h1>Develop. Preview. Ship.</h1>);
+      const root = ReactDOM.createRoot(app);
+      // root.render(<HomePagewprops />);
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
